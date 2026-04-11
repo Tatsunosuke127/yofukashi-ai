@@ -9,8 +9,24 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        bg: "#0F0F0E",
+        card: "#1C1B1A",
+        accent: "#C4A882",
+        text: "#F2EDE8",
+        subtext: "#8A8680",
+        border: "#2A2826",
+      },
+      fontFamily: {
+        mincho: ["var(--font-shippori)"],
+        sans: ["var(--font-noto)"],
+        accent: ["var(--font-cormorant)"],
+      },
+      spacing: {
+        section: "120px",
+        "section-sp": "80px",
+      },
+      borderRadius: {
+        card: "6px",
       },
     },
   },

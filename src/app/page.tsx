@@ -1,101 +1,141 @@
-import Image from "next/image";
+import Link from "next/link";
+import FadeIn from "@/components/FadeIn";
+import { latestVideos } from "@/data/videos";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      {/* Hero Section */}
+      <section className="min-h-screen flex items-center justify-center px-6">
+        <div className="text-center max-w-lg">
+          <FadeIn>
+            <p className="font-accent italic text-sm text-subtext tracking-widest mb-4">
+              meet ai
+            </p>
+          </FadeIn>
+          <FadeIn>
+            <h1 className="font-mincho text-4xl md:text-5xl tracking-wider mb-6">
+              アイ
+            </h1>
+          </FadeIn>
+          <FadeIn>
+            <div className="flex items-center justify-center gap-3 mb-8">
+              <span className="w-8 h-px bg-accent/40" />
+              <span className="text-accent text-xs">&#x2726;</span>
+              <span className="w-8 h-px bg-accent/40" />
+            </div>
+          </FadeIn>
+          <FadeIn>
+            <p className="font-sans text-sm text-text/80 leading-[2] mb-8">
+              26歳。都内のIT企業で働いてる、ふつうのOL。
+              <br />
+              深夜0時をすぎると、なぜかAIを調べはじめちゃう。
+              <br />
+              知ってるとちょっと得すること、こっそり教えるね。
+            </p>
+          </FadeIn>
+          <FadeIn>
+            <span className="inline-block border border-accent/60 text-accent text-xs px-5 py-2 rounded-full tracking-wide mb-10">
+              知らないだけで、損してる。
+            </span>
+          </FadeIn>
+          <FadeIn>
+            <Link
+              href="/tools"
+              className="inline-block border border-text/20 text-text text-sm px-6 py-3 rounded-full hover:border-accent hover:text-accent transition-colors"
+            >
+              アイが試したツールを見る &rarr;
+            </Link>
+          </FadeIn>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      {/* Philosophy Section */}
+      <section className="py-section-sp md:py-section px-6">
+        <div className="max-w-2xl mx-auto text-center">
+          <FadeIn>
+            <div className="flex items-center justify-center gap-2 mb-6">
+              <span className="w-6 h-px bg-accent/30" />
+              <span className="text-accent/50 text-[10px]">&#x2726;</span>
+              <span className="w-6 h-px bg-accent/30" />
+            </div>
+            <p className="font-mincho text-xl md:text-2xl text-text mb-3 leading-relaxed">
+              頑張らなくていいよ。
+              <br />
+              賢くなればいいの。
+            </p>
+            <p className="text-xs text-subtext mt-4">― アイの口ぐせ</p>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Latest Videos Section */}
+      <section className="py-section-sp md:py-section px-6">
+        <div className="max-w-5xl mx-auto">
+          <FadeIn>
+            <p className="font-accent italic text-sm text-subtext tracking-widest text-center mb-2">
+              latest
+            </p>
+            <p className="font-mincho text-base text-center mb-10">
+              最近気になって調べちゃったやつ
+            </p>
+          </FadeIn>
+          <div className="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto pb-4 -mx-6 px-6 md:mx-0 md:px-0 snap-x snap-mandatory">
+            {latestVideos.map((video) => (
+              <FadeIn key={video.id} className="min-w-[240px] md:min-w-0 snap-start">
+                <div className="youtube-embed bg-card">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${video.youtube_id}`}
+                    title={video.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+                <a
+                  href={video.note_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block text-xs text-subtext hover:text-accent transition-colors mt-3"
+                >
+                  使い方を読む &rarr;
+                </a>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Cards Section */}
+      <section className="py-section-sp md:py-section px-6">
+        <div className="max-w-3xl mx-auto grid md:grid-cols-2 gap-6">
+          <FadeIn>
+            <Link
+              href="/tools"
+              className="block bg-card border border-border rounded-card p-8 hover:border-accent/40 transition-colors group"
+            >
+              <p className="font-mincho text-lg mb-2 group-hover:text-accent transition-colors">
+                ツール一覧
+              </p>
+              <p className="text-sm text-subtext">
+                ぜんぶ自分で使って確かめてるよ。
+              </p>
+            </Link>
+          </FadeIn>
+          <FadeIn>
+            <Link
+              href="/note"
+              className="block bg-card border border-border rounded-card p-8 hover:border-accent/40 transition-colors group"
+            >
+              <p className="font-mincho text-lg mb-2 group-hover:text-accent transition-colors">
+                note記事
+              </p>
+              <p className="text-sm text-subtext">
+                使い方、ぜんぶ書いてるよ。
+              </p>
+            </Link>
+          </FadeIn>
+        </div>
+      </section>
+    </>
   );
 }
