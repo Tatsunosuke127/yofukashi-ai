@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
 import { latestVideos } from "@/data/videos";
 
@@ -8,6 +9,18 @@ export default function Home() {
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center px-6">
         <div className="text-center max-w-lg">
+          <FadeIn>
+            <div className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-6 rounded-full overflow-hidden border border-border">
+              <Image
+                src="/images/ai-avatar.png"
+                alt="アイ"
+                width={160}
+                height={160}
+                className="w-full h-full object-cover"
+                priority
+              />
+            </div>
+          </FadeIn>
           <FadeIn>
             <p className="font-accent italic text-sm text-subtext tracking-widest mb-4">
               AI-generated influencer

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
 import { tools } from "@/data/tools";
 import type { Metadata } from "next";
@@ -14,6 +15,16 @@ export default function AboutPage() {
     <div className="pt-24 pb-section-sp md:pb-section px-6">
       <div className="max-w-2xl mx-auto">
         <FadeIn>
+          <div className="w-28 h-28 md:w-36 md:h-36 mb-6 rounded-full overflow-hidden border border-border">
+            <Image
+              src="/images/ai-portrait.png"
+              alt="アイ"
+              width={144}
+              height={144}
+              className="w-full h-full object-cover"
+              priority
+            />
+          </div>
           <p className="font-accent italic text-sm text-subtext tracking-widest mb-4">
             about ai
           </p>
