@@ -32,12 +32,12 @@ export const metadata: Metadata = {
     template: "%s｜夜ふかしAI",
   },
   description:
-    "アイが深夜に見つけたAIツールを、使い方つきで紹介。知らないだけで、損してる。",
+    "声もサイトもAIで作られたインフルエンサー「アイ」が、深夜に見つけたAIツールを紹介。知らないだけで、損してる。",
   metadataBase: new URL("https://yofukashi-ai.vercel.app"),
   openGraph: {
     title: "夜ふかしAI｜知らないだけで、損してる。",
     description:
-      "アイが深夜に見つけたAIツールを、使い方つきで紹介。",
+      "AIが作ったAIインフルエンサー「アイ」が、AIツールを紹介。",
     siteName: "夜ふかしAI",
     locale: "ja_JP",
     type: "website",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "夜ふかしAI｜知らないだけで、損してる。",
     description:
-      "アイが深夜に見つけたAIツールを、使い方つきで紹介。",
+      "AIが作ったAIインフルエンサー「アイ」が、AIツールを紹介。",
   },
   robots: {
     index: true,

@@ -3,69 +3,74 @@ import FadeIn from "@/components/FadeIn";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "このサイトの作り方",
+  title: "アイの作り方",
   description:
-    "夜ふかしAIのWebサイトをAI（Claude）だけで作った方法を全公開。Next.js + Tailwind CSS + Vercel。",
+    "AIインフルエンサー「アイ」の全構造を公開。声・サイト・台本・運用、すべてAI。",
 };
 
-const steps = [
+const layers = [
   {
     number: "01",
-    title: "コンセプトを決める",
+    label: "voice",
+    title: "声を作る",
     description:
-      "「深夜にAIツールを調べるOL」というキャラ設定と、ダークで洗練されたミニマルデザインを設計。カラー・フォント・余白のルールを最初に全部決めた。",
+      "ElevenLabsで音声を生成。感情の乗った自然な声がAIだけで作れる。録音もマイクも不要。",
   },
   {
     number: "02",
-    title: "AIに全部書いてもらう",
+    label: "script",
+    title: "台本を書く",
     description:
-      "Claude（AI）に仕様書を渡して、コードを全部書いてもらった。Next.js 14 + TypeScript + Tailwind CSS。人間がコードを1行も書かずに完成。",
+      "AIが20秒のショート台本を自動生成。ツール名を入力するだけで、紹介文・キャプション・固定コメントまで全部出てくる。",
   },
   {
     number: "03",
-    title: "5ページ構成で作る",
+    label: "site",
+    title: "サイトを作る",
     description:
-      "TOP / ツール一覧 / note記事 / About / Contact の5ページ。モバイルファースト設計で、スマホで見たときに一番きれいに見えるように。",
+      "このサイトはClaude（AI）がコードを全部書いた。Next.js + Tailwind CSS + Vercel。人間が書いたコードは0行。",
   },
   {
     number: "04",
-    title: "noteとYouTubeを自動連携",
+    label: "content",
+    title: "記事を書く",
     description:
-      "noteに記事を書くと、このサイトにも自動で反映されるスクリプトを作成。YouTubeのショート動画も自動で最新3本が表示される。",
+      "noteの記事もAIで草稿を生成。人間が監修して公開。ツールの使い方を、実際の画面つきで解説してる。",
   },
   {
     number: "05",
-    title: "Vercelで無料デプロイ",
+    label: "automate",
+    title: "自動で回す",
     description:
-      "GitHubにコードをpushするだけで、自動でサイトが公開される。サーバー代は0円。独自ドメインも設定できる。",
+      "noteに記事を書くとサイトに自動反映。YouTubeの最新動画も自動で表示。運用もAIの力で回してる。",
   },
 ];
 
 const techStack = [
   {
-    name: "Next.js 14",
+    name: "ElevenLabs",
+    role: "声",
+    description: "AIの声を生成。アイの声はここで作られてる。",
+  },
+  {
+    name: "Claude",
+    role: "開発・台本",
+    description: "サイト構築、台本生成、記事の草稿。頭脳担当。",
+  },
+  {
+    name: "Next.js",
     role: "フレームワーク",
-    description: "Reactベースのフレームワーク。高速で、SEOにも強い。",
-  },
-  {
-    name: "TypeScript",
-    role: "言語",
-    description: "JavaScriptに型をつけたもの。エラーが減る。",
-  },
-  {
-    name: "Tailwind CSS",
-    role: "スタイリング",
-    description: "CSSを書かずにデザインできる。効率が良すぎる。",
+    description: "サイトの基盤。高速でSEOにも強い。",
   },
   {
     name: "Vercel",
     role: "ホスティング",
-    description: "GitHubと連携するだけで自動デプロイ。無料。",
+    description: "GitHubにpushするだけで自動公開。サーバー代0円。",
   },
   {
-    name: "Claude",
-    role: "AI開発アシスタント",
-    description: "コード生成、設計、実装。全部やってもらった。",
+    name: "Tailwind CSS",
+    role: "デザイン",
+    description: "CSSを書かずにデザインできる。効率が良すぎる。",
   },
 ];
 
@@ -76,15 +81,15 @@ export default function MakingPage() {
         {/* Header */}
         <FadeIn>
           <p className="font-accent italic text-sm text-subtext tracking-widest mb-4">
-            how i made this
+            how ai was made
           </p>
           <h1 className="font-mincho text-2xl md:text-3xl mb-3">
-            このサイト、AIだけで作ったよ。
+            ぜんぶ、AIで作ってる。
           </h1>
           <p className="text-sm text-subtext leading-relaxed mb-4">
-            コードは1行も書いてない。
+            声も、サイトも、台本も。
             <br />
-            AIに仕様を伝えるだけで、ここまでできる時代。
+            人間がやってるのは、最終チェックだけ。
           </p>
           <div className="flex items-center gap-3 mb-12">
             <span className="w-8 h-px bg-accent/40" />
@@ -97,52 +102,55 @@ export default function MakingPage() {
         <FadeIn>
           <div className="bg-card border border-border rounded-card p-6 md:p-8 mb-16">
             <p className="font-accent italic text-xs text-subtext tracking-widest mb-4">
-              summary
+              overview
             </p>
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
-                <p className="text-subtext text-xs mb-1">制作期間</p>
-                <p className="text-text">約1時間</p>
+                <p className="text-subtext text-xs mb-1">制作者</p>
+                <p className="text-text">AI（人間は監修のみ）</p>
               </div>
               <div>
-                <p className="text-subtext text-xs mb-1">コーディング</p>
-                <p className="text-text">0行（AIが全部書いた）</p>
+                <p className="text-subtext text-xs mb-1">手書きコード</p>
+                <p className="text-text">0行</p>
               </div>
               <div>
                 <p className="text-subtext text-xs mb-1">サーバー代</p>
-                <p className="text-text">0円（Vercel無料枠）</p>
+                <p className="text-text">0円</p>
               </div>
               <div>
-                <p className="text-subtext text-xs mb-1">使ったAI</p>
-                <p className="text-text">Claude</p>
+                <p className="text-subtext text-xs mb-1">AI率</p>
+                <p className="text-text">声・サイト・台本・記事</p>
               </div>
             </div>
           </div>
         </FadeIn>
 
-        {/* Steps */}
+        {/* Structure */}
         <FadeIn>
           <p className="font-accent italic text-sm text-subtext tracking-widest mb-2">
-            steps
+            structure
           </p>
           <p className="font-mincho text-lg mb-10">
-            作り方、5ステップで全公開。
+            アイを構成する5つのレイヤー。
           </p>
         </FadeIn>
 
         <div className="space-y-8 mb-16">
-          {steps.map((step) => (
-            <FadeIn key={step.number}>
+          {layers.map((layer) => (
+            <FadeIn key={layer.number}>
               <div className="flex gap-6">
-                <div className="shrink-0">
+                <div className="shrink-0 w-12">
                   <span className="font-accent text-2xl text-accent/40">
-                    {step.number}
+                    {layer.number}
                   </span>
                 </div>
                 <div className="border-b border-border pb-8 flex-1">
-                  <h3 className="font-mincho text-base mb-2">{step.title}</h3>
+                  <p className="font-accent italic text-xs text-subtext tracking-wider mb-1">
+                    {layer.label}
+                  </p>
+                  <h3 className="font-mincho text-base mb-2">{layer.title}</h3>
                   <p className="text-sm text-subtext leading-relaxed">
-                    {step.description}
+                    {layer.description}
                   </p>
                 </div>
               </div>
@@ -155,7 +163,7 @@ export default function MakingPage() {
           <p className="font-accent italic text-sm text-subtext tracking-widest mb-2">
             tech stack
           </p>
-          <p className="font-mincho text-lg mb-10">使った技術たち。</p>
+          <p className="font-mincho text-lg mb-10">私を動かしてる技術たち。</p>
         </FadeIn>
 
         <div className="space-y-4 mb-16">
@@ -183,11 +191,13 @@ export default function MakingPage() {
               <span className="w-6 h-px bg-accent/30" />
             </div>
             <p className="font-mincho text-xl md:text-2xl text-text mb-3 leading-relaxed">
-              デザインもコードも、
+              AIが作ったAIが、
               <br />
-              AIに任せていい時代だよ。
+              AIを紹介してる。
             </p>
-            <p className="text-xs text-subtext mt-4">― アイ</p>
+            <p className="text-xs text-subtext mt-4">
+              それが、夜ふかしAI。
+            </p>
           </div>
         </FadeIn>
 
@@ -206,14 +216,14 @@ export default function MakingPage() {
               </p>
             </Link>
             <Link
-              href="/note"
+              href="/about"
               className="block bg-card border border-border rounded-card p-6 hover:border-accent/40 transition-colors group"
             >
               <p className="font-mincho text-base mb-1 group-hover:text-accent transition-colors">
-                note記事を読む
+                アイについて
               </p>
               <p className="text-xs text-subtext">
-                使い方を詳しく書いてるよ。
+                AIインフルエンサーの全貌。
               </p>
             </Link>
           </div>

@@ -10,7 +10,7 @@ export default function Home() {
         <div className="text-center max-w-lg">
           <FadeIn>
             <p className="font-accent italic text-sm text-subtext tracking-widest mb-4">
-              meet ai
+              AI-generated influencer
             </p>
           </FadeIn>
           <FadeIn>
@@ -27,11 +27,11 @@ export default function Home() {
           </FadeIn>
           <FadeIn>
             <p className="font-sans text-sm text-text/80 leading-[2] mb-8">
-              26歳。都内のIT企業で働いてる、ふつうのOL。
+              声も、顔も、このサイトも、ぜんぶAIで作られてる。
               <br />
-              深夜0時をすぎると、なぜかAIを調べはじめちゃう。
+              人間は関わってるけど、表に立ってるのは私。
               <br />
-              知ってるとちょっと得すること、こっそり教えるね。
+              深夜に見つけたAIツール、こっそり教えるね。
             </p>
           </FadeIn>
           <FadeIn>
@@ -64,7 +64,38 @@ export default function Home() {
               <br />
               賢くなればいいの。
             </p>
-            <p className="text-xs text-subtext mt-4">― アイの口ぐせ</p>
+            <p className="text-xs text-subtext mt-4">― アイ（AIが生成した言葉）</p>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* What is AI section */}
+      <section className="py-section-sp md:py-section px-6">
+        <div className="max-w-2xl mx-auto">
+          <FadeIn>
+            <p className="font-accent italic text-sm text-subtext tracking-widest text-center mb-2">
+              what is ai
+            </p>
+            <p className="font-mincho text-base text-center mb-10">
+              アイって何者？
+            </p>
+          </FadeIn>
+          <FadeIn>
+            <div className="bg-card border border-border rounded-card p-6 md:p-8 space-y-4 text-sm text-text/80 leading-relaxed">
+              <p>
+                私はAIで作られたインフルエンサー。
+              </p>
+              <p>
+                声はElevenLabs、サイトはClaude、台本もAI。
+                <br />
+                人間がいないわけじゃない。でも、表に立ってるのは私。
+              </p>
+              <p>
+                AIが何をどこまでできるのか——
+                <br />
+                この存在そのものが、その答えだと思ってる。
+              </p>
+            </div>
           </FadeIn>
         </div>
       </section>
@@ -123,14 +154,14 @@ export default function Home() {
           </FadeIn>
           <FadeIn>
             <Link
-              href="/note"
+              href="/making"
               className="block bg-card border border-border rounded-card p-8 hover:border-accent/40 transition-colors group"
             >
               <p className="font-mincho text-lg mb-2 group-hover:text-accent transition-colors">
-                note記事
+                作り方を全公開
               </p>
               <p className="text-sm text-subtext">
-                使い方、ぜんぶ書いてるよ。
+                声もサイトも、ぜんぶAI。その裏側。
               </p>
             </Link>
           </FadeIn>
