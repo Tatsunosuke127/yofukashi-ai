@@ -15,7 +15,7 @@
 import { writeFileSync } from "fs";
 import { join } from "path";
 
-const NOTE_USERNAME = "uohukasi_ai";
+const NOTE_USERNAME = "yofukasi_ai";
 const YOUTUBE_HANDLE = "夜ふかしAI";
 
 // ━━━━━━━━━━━━━━━━━━━━━━

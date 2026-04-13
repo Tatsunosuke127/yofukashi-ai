@@ -21,7 +21,7 @@ export default function Footer() {
             </svg>
           </a>
           <a
-            href="https://note.com/uohukasi_ai"
+            href="https://note.com/yofukasi_ai"
             target="_blank"
             rel="noopener noreferrer"
             className="text-subtext hover:text-accent transition-colors text-sm font-accent italic"
