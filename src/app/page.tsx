@@ -151,7 +151,7 @@ export default function Home() {
 
       {/* CTA Cards Section */}
       <section className="py-section-sp md:py-section px-6">
-        <div className="max-w-3xl mx-auto grid md:grid-cols-2 gap-6">
+        <div className="max-w-3xl mx-auto grid md:grid-cols-3 gap-6">
           <FadeIn>
             <Link
               href="/tools"
@@ -175,6 +175,19 @@ export default function Home() {
               </p>
               <p className="text-sm text-subtext">
                 声もサイトも、ぜんぶAI。その裏側。
+              </p>
+            </Link>
+          </FadeIn>
+          <FadeIn>
+            <Link
+              href="/gear"
+              className="block bg-card border border-border rounded-card p-8 hover:border-accent/40 transition-colors group"
+            >
+              <p className="font-mincho text-lg mb-2 group-hover:text-accent transition-colors">
+                アイの作業環境
+              </p>
+              <p className="text-sm text-subtext">
+                深夜の作業を支えてるモノたち。
               </p>
             </Link>
           </FadeIn>
