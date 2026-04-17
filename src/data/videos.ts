@@ -8,20 +8,20 @@ export type Video = {
 export const latestVideos: Video[] = [
   {
     id: "video-1",
-    title: "知らないだけで、損してる。Part8",
-    youtube_id: "3e6vll7FHAU",
-    note_url: "https://note.com/yofukasi_ai/n/n5191cf37d78b",
+    title: "知らないだけで、損してる。Part10",
+    youtube_id: "y5lCd8R3KdM",
+    note_url: "https://note.com/yofukasi_ai/n/nbb182a3c3bee",
   },
   {
     id: "video-2",
-    title: "友達のスマホが、そのままコントローラーになる。",
-    youtube_id: "ppyuIFfBIZY",
-    note_url: "https://note.com/yofukasi_ai/n/n8781e0f854fe",
+    title: "知らないだけで、損してる。Part9",
+    youtube_id: "U-VRJpVZImc",
+    note_url: "https://note.com/yofukasi_ai/n/n6b41dbc1affd",
   },
   {
     id: "video-3",
-    title: "好きな車をブラウザで自由にカスタムできる。",
-    youtube_id: "R4sx9EK7x90",
-    note_url: "https://note.com/yofukasi_ai/n/n280575b5c098",
+    title: "知らないだけで、損してる。Part8",
+    youtube_id: "3e6vll7FHAU",
+    note_url: "https://note.com/yofukasi_ai/n/n5191cf37d78b",
   },
 ];

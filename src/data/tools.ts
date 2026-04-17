@@ -10,6 +10,8 @@ export type Tool = {
 
 export const categories = [
   "全て",
+  "動画・アニメ",
+  "自動化",
   "ビジネス効率化",
   "デザイン",
   "インテリア",
@@ -18,6 +20,24 @@ export const categories = [
 
 // affiliate_url: 楽天アフィリエイトURLに差し替えてください
 export const tools: Tool[] = [
+  {
+    id: "paperanimator",
+    name: "PaperAnimator",
+    category: "動画・アニメ",
+    kirara_comment: "紙が動くアニメ動画が10秒で作れる。",
+    affiliate_url: "TODO_AFFILIATE_PAPERANIMATOR",
+    note_url: "https://note.com/yofukasi_ai/n/nbb182a3c3bee",
+    is_recommended: true,
+  },
+  {
+    id: "claudecode",
+    name: "Claude Code",
+    category: "自動化",
+    kirara_comment: "毎日の作業を全部自動化できる。",
+    affiliate_url: "TODO_AFFILIATE_CLAUDECODE",
+    note_url: "https://note.com/yofukasi_ai/n/n6b41dbc1affd",
+    is_recommended: true,
+  },
   {
     id: "planner5d",
     name: "Planner 5D",

@@ -8,6 +8,20 @@ export type NoteArticle = {
 
 export const notes: NoteArticle[] = [
   {
+    id: "paperanimator",
+    title: "「あの紙が動くアニメ動画」が、PaperAnimatorで10秒で作れるようになった話。",
+    category: "動画・アニメ",
+    description: "画像をアップするだけで、紙が動くアニメーション動画が作れる。",
+    note_url: "https://note.com/yofukasi_ai/n/nbb182a3c3bee",
+  },
+  {
+    id: "claudecode",
+    title: "「毎日の作業を全部自動化」が、Claude Codeで今日から始められる話。",
+    category: "自動化",
+    description: "日本語で指示するだけで、コードも自動化も全部やってくれる。",
+    note_url: "https://note.com/yofukasi_ai/n/n6b41dbc1affd",
+  },
+  {
     id: "planner5d",
     title: "「自分の部屋のレイアウト」が、Planner 5Dで数秒で3Dになる話。",
     category: "インテリア",
