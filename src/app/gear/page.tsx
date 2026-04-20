@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { gearItems, gearCategories, getAffiliateUrl, type GearItem } from "@/data/gear";
+import { gearItems, gearCategories, productLink, type GearItem } from "@/data/gear";
 import FadeIn from "@/components/FadeIn";
 
 export default function GearPage() {
@@ -10,8 +10,6 @@ export default function GearPage() {
   const filtered = gearItems.filter(
     (item) => activeCategory === "全て" || item.category === activeCategory
   );
-
-  const recommendedCount = gearItems.filter((i) => i.badge).length;
 
   return (
     <div className="pt-24 pb-section-sp md:pb-section px-6">
@@ -27,7 +25,7 @@ export default function GearPage() {
             深夜の作業を支えてるモノたち。ぜんぶ本気で選んでるよ。
           </p>
           <p className="text-xs text-subtext/70 mb-10">
-            ※ 楽天アフィリエイトを含みます。購入は楽天市場で完結するので安心。
+            ※ 楽天アフィリエイトを含みます。
           </p>
         </FadeIn>
 
@@ -56,25 +54,13 @@ export default function GearPage() {
             <GearCard key={item.id} item={item} />
           ))}
         </div>
-
-        {/* Bottom CTA */}
-        <FadeIn>
-          <div className="mt-20 text-center">
-            <p className="text-xs text-subtext mb-2">
-              {recommendedCount} アイテムに「アイの一押し」バッジがついてるよ。
-            </p>
-            <p className="text-xs text-subtext/70">
-              全部、自分で使って本気で選んでる。
-            </p>
-          </div>
-        </FadeIn>
       </div>
     </div>
   );
 }
 
 function GearCard({ item }: { item: GearItem }) {
-  const affUrl = getAffiliateUrl(item);
+  const affUrl = productLink(item.product_url);
   const isRecommended = item.badge === "アイの一押し";
 
   return (
@@ -101,9 +87,24 @@ function GearCard({ item }: { item: GearItem }) {
         {/* Name */}
         <h3 className="font-mincho text-lg mb-3 leading-snug">{item.name}</h3>
 
+        {/* Aiコメント */}
+        <p className="text-sm text-subtext italic mb-4 leading-relaxed">
+          「{item.comment}」
+        </p>
+
+        {/* 買う理由（購買意欲） */}
+        <div className="bg-bg/40 border-l-2 border-accent/60 pl-4 py-2 mb-5 flex-1">
+          <p className="font-accent italic text-[10px] text-subtext tracking-wider mb-1.5">
+            why buy
+          </p>
+          <p className="text-sm text-text/90 leading-relaxed">
+            {item.reason}
+          </p>
+        </div>
+
         {/* Price & Rating */}
         {(item.price || item.rating) && (
-          <div className="flex items-baseline gap-4 mb-4 border-b border-border pb-4">
+          <div className="flex items-baseline gap-6 mb-5 border-t border-border pt-4">
             {item.price && (
               <div>
                 <p className="text-[10px] text-subtext mb-0.5">参考価格</p>
@@ -122,28 +123,21 @@ function GearCard({ item }: { item: GearItem }) {
           </div>
         )}
 
-        {/* Comment */}
-        <p className="text-sm text-subtext italic mb-6 flex-1 leading-relaxed">
-          「{item.comment}」
+        {/* CTA */}
+        <a
+          href={affUrl}
+          target="_blank"
+          rel="noopener noreferrer sponsored"
+          className="group flex items-center justify-between text-sm border border-accent bg-accent/5 text-accent px-5 py-3 rounded-full hover:bg-accent hover:text-bg transition-all"
+        >
+          <span className="font-medium">楽天で最安値をチェック</span>
+          <span className="transition-transform group-hover:translate-x-1">
+            &rarr;
+          </span>
+        </a>
+        <p className="text-[10px] text-subtext/60 text-center mt-2">
+          商品ページに直接飛ぶよ
         </p>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-col gap-2">
-          <a
-            href={affUrl}
-            target="_blank"
-            rel="noopener noreferrer sponsored"
-            className="group flex items-center justify-between text-sm border border-accent bg-accent/5 text-accent px-5 py-3 rounded-full hover:bg-accent hover:text-bg transition-all"
-          >
-            <span className="font-medium">最安値を楽天でチェック</span>
-            <span className="transition-transform group-hover:translate-x-1">
-              &rarr;
-            </span>
-          </a>
-          <p className="text-[10px] text-subtext/60 text-center">
-            楽天ポイントも貯まるよ
-          </p>
-        </div>
       </div>
     </FadeIn>
   );

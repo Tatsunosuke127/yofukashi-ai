@@ -2,13 +2,12 @@ export type GearItem = {
   id: string;
   name: string;
   category: string;
+  /** 短い一言コメント（深夜の口調） */
   comment: string;
-  /** 楽天の商品ページURL（https://item.rakuten.co.jp/...）を指定。空の場合はsearch_keywordで検索 */
-  product_url?: string;
-  /** product_urlが無い場合、この検索キーワードでランキングページに飛ばす */
-  search_keyword?: string;
-  /** 商品画像URL（楽天の画像URLをそのまま） */
-  image_url?: string;
+  /** 買う理由（購買意欲を掻き立てる具体的なベネフィット） */
+  reason: string;
+  /** 楽天の個別商品URL（https://item.rakuten.co.jp/...） */
+  product_url: string;
   /** 価格帯表示（例: "¥198,800〜"） */
   price?: string;
   /** 評価（5点満点の数値、例: 4.6） */
@@ -30,31 +29,12 @@ export const gearCategories = [
 
 // 楽天アフィリエイトID
 const AFF_ID = "52d4f5c4.462f9a03.52d4f5c5.b68fee35";
-
-// ut パラメータ（固定値 / base64({"page":"item","type":"hybrid_url","col":1}) 相当）
 const UT_ITEM = "eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwiY29sIjoxfQ==";
-const UT_RANKING = "eyJwYWdlIjoicmFua2luZyIsInR5cGUiOiJoeWJyaWRfdXJsIiwiY29sIjoxfQ==";
 
-/** 個別商品ページへのアフィリリンク */
+/** 個別商品ページへの楽天アフィリリンクを生成 */
 export function productLink(productUrl: string): string {
   const encoded = encodeURIComponent(productUrl);
   return `https://hb.afl.rakuten.co.jp/ichiba/${AFF_ID}/?pc=${encoded}&link_type=hybrid_url&ut=${UT_ITEM}`;
-}
-
-/** 売れ筋ランキングページへのアフィリリンク（検索より購買に繋がりやすい） */
-export function rankingLink(keyword: string): string {
-  const encoded = encodeURIComponent(keyword);
-  const targetUrl = encodeURIComponent(
-    `https://ranking.rakuten.co.jp/keyword/${encoded}/`
-  );
-  return `https://hb.afl.rakuten.co.jp/ichiba/${AFF_ID}/?pc=${targetUrl}&link_type=hybrid_url&ut=${UT_RANKING}`;
-}
-
-/** gearItem から最終的な遷移先URLを算出 */
-export function getAffiliateUrl(item: GearItem): string {
-  if (item.product_url) return productLink(item.product_url);
-  if (item.search_keyword) return rankingLink(item.search_keyword);
-  return rankingLink(item.name);
 }
 
 export const gearItems: GearItem[] = [
@@ -64,7 +44,9 @@ export const gearItems: GearItem[] = [
     name: "MacBook Air M4 13インチ",
     category: "PC",
     comment: "深夜の作業はぜんぶこれ。軽い、速い、ファンレス。",
-    search_keyword: "MacBook Air M4 13インチ",
+    reason:
+      "1.24kgで片手で持てるのに、M4チップで動画編集もAI処理も余裕。ファンレスだから深夜でも無音。バッテリーは18時間。カフェでも電源いらない。",
+    product_url: "https://item.rakuten.co.jp/try3/4549995542516/",
     price: "¥164,800〜",
     rating: 4.7,
     badge: "アイの一押し",
@@ -74,7 +56,9 @@ export const gearItems: GearItem[] = [
     name: "MacBook Pro M4 14インチ",
     category: "PC",
     comment: "動画編集もAI処理も、これ1台で全部できる。",
-    search_keyword: "MacBook Pro M4 14インチ",
+    reason:
+      "Liquid Retina XDRディスプレイで色が神がかってる。動画編集・AI画像生成・音声処理を同時にやってもヌルヌル。プロ向けだけど、一度使うと戻れない。",
+    product_url: "https://item.rakuten.co.jp/shop-inverse/sku-macbookpro-14-2024/",
     price: "¥248,800〜",
     rating: 4.8,
   },
@@ -85,7 +69,9 @@ export const gearItems: GearItem[] = [
     name: "Dell U2723QE 27インチ 4K",
     category: "モニター",
     comment: "USB-Cケーブル1本で映像も給電も。デスクがすっきりする。",
-    search_keyword: "Dell U2723QE",
+    reason:
+      "ケーブル1本でMacに給電しながら4K出力。USBハブも内蔵してるから、これだけで周辺機器も繋がる。作業効率が段違いに変わるよ。",
+    product_url: "https://item.rakuten.co.jp/olebliss/pc-hdblc-27-169-087/",
     price: "¥79,800〜",
     rating: 4.6,
     badge: "在宅の定番",
@@ -95,7 +81,9 @@ export const gearItems: GearItem[] = [
     name: "LG 27UP850N-W 27インチ 4K",
     category: "モニター",
     comment: "色が正確でコスパ最強。このモニターで十分。",
-    search_keyword: "LG 27UP850N",
+    reason:
+      "4K・HDR400・sRGB 95%カバーで写真も動画もきれい。USB-C 90W給電つきで、このスペックで5万円台は破格。迷ったらこれでいい。",
+    product_url: "https://item.rakuten.co.jp/ebest/4989027031593/",
     price: "¥45,800〜",
     rating: 4.5,
   },
@@ -106,7 +94,9 @@ export const gearItems: GearItem[] = [
     name: "Logicool MX Keys S",
     category: "キーボード・マウス",
     comment: "打鍵感が静かで気持ちいい。深夜の作業に最適。",
-    search_keyword: "Logicool MX Keys S",
+    reason:
+      "タイピングの静音性が異次元。バックライトが手を近づけた瞬間に点く。Mac/Win/iPadを3台同時登録してワンボタンで切り替えられる。",
+    product_url: "https://item.rakuten.co.jp/logicool/kx800sgr/",
     price: "¥15,800〜",
     rating: 4.6,
   },
@@ -115,7 +105,9 @@ export const gearItems: GearItem[] = [
     name: "Logicool MX Master 4",
     category: "キーボード・マウス",
     comment: "一度使うと戻れない。スクロールが異次元。",
-    search_keyword: "Logicool MX Master 4",
+    reason:
+      "MagSpeedスクロールで1,000行のスプレッドシートも一瞬。親指ボタンでジェスチャー操作、3台切替、70日持つバッテリー。もう普通のマウスには戻れない。",
+    product_url: "https://item.rakuten.co.jp/logicool/mx2400grda/",
     price: "¥16,500〜",
     rating: 4.7,
     badge: "売れ筋No.1",
@@ -125,7 +117,9 @@ export const gearItems: GearItem[] = [
     name: "HHKB Professional HYBRID Type-S",
     category: "キーボード・マウス",
     comment: "最高峰の打鍵感。静電容量無接点。一生モノ。",
-    search_keyword: "HHKB Professional HYBRID Type-S",
+    reason:
+      "エンジニアが愛する静電容量無接点方式。Bluetoothと有線のハイブリッドで、4台同時登録。コンパクトだからデスクが広くなる。10年使える本物。",
+    product_url: "https://item.rakuten.co.jp/pfudirect/pd-kb820bs/",
     price: "¥36,850〜",
     rating: 4.8,
     badge: "深夜の相棒",
@@ -137,7 +131,10 @@ export const gearItems: GearItem[] = [
     name: "AirPods Pro 3",
     category: "音響",
     comment: "ノイキャンで深夜の集中力が変わる。",
-    search_keyword: "AirPods Pro 第3世代",
+    reason:
+      "第2世代比2倍のノイキャン性能。心拍数モニタまで搭載。「装着検出」で外した瞬間に音楽停止。Apple製品との連携は世界最強。",
+    product_url:
+      "https://item.rakuten.co.jp/rakutenmobile-store/apple-rm2509012/",
     price: "¥39,800〜",
     rating: 4.7,
     badge: "アイの一押し",
@@ -147,7 +144,9 @@ export const gearItems: GearItem[] = [
     name: "SONY WH-1000XM6",
     category: "音響",
     comment: "長時間つけても疲れない。ノイキャン最強。",
-    search_keyword: "SONY WH-1000XM6",
+    reason:
+      "業界最高クラスのノイキャン+12個のマイクで通話クリア。30時間バッテリー、マルチポイント接続。一度つけたら外したくないレベルの没入感。",
+    product_url: "https://item.rakuten.co.jp/auc-worldichi/4548736162600/",
     price: "¥54,800〜",
     rating: 4.8,
   },
@@ -158,7 +157,9 @@ export const gearItems: GearItem[] = [
     name: "FlexiSpot E7 電動昇降デスク",
     category: "チェア・デスク",
     comment: "立ったり座ったり。深夜でも眠くならないコツ。",
-    search_keyword: "FlexiSpot E7 電動昇降デスク",
+    reason:
+      "デュアルモーターで125kgまで耐荷重、高さメモリー4つ。立って作業すると眠気が消えて集中力が戻る。一度買ったら一生モノのデスク。",
+    product_url: "https://item.rakuten.co.jp/loctek/e7b/",
     price: "¥55,000〜",
     rating: 4.6,
     badge: "売れ筋No.1",
@@ -168,7 +169,9 @@ export const gearItems: GearItem[] = [
     name: "Ergohuman Pro オットマン付き",
     category: "チェア・デスク",
     comment: "腰が終わる前に買って。マジで。",
-    search_keyword: "Ergohuman Pro オットマン",
+    reason:
+      "腰痛持ちが全員絶賛するランバーサポート。オットマン付きで仮眠も完璧。座面メッシュで蒸れない。10年は買い替えなくていいクオリティ。",
+    product_url: "https://item.rakuten.co.jp/ergohuman/ehp-lpl/",
     price: "¥108,000〜",
     rating: 4.5,
   },
@@ -179,7 +182,10 @@ export const gearItems: GearItem[] = [
     name: "BenQ ScreenBar Plus",
     category: "照明",
     comment: "画面に反射しない。目が疲れない。深夜の必需品。",
-    search_keyword: "BenQ ScreenBar Plus",
+    reason:
+      "モニター上に載せるだけ。自動調光で周囲に合わせて明るさ調整。画面に映り込まない設計で目の疲れが激減。夜作業する人は絶対買ったほうがいい。",
+    product_url:
+      "https://item.rakuten.co.jp/benq-directshop/lighting-screenbar-pro/",
     price: "¥16,900〜",
     rating: 4.7,
     badge: "深夜の相棒",
@@ -191,7 +197,9 @@ export const gearItems: GearItem[] = [
     name: "AI時代の生存戦略",
     category: "書籍",
     comment: "AIと一緒に生きる方法が書いてある。",
-    search_keyword: "AI時代 生存戦略",
+    reason:
+      "AIに仕事を奪われる側じゃなく、AIを使いこなす側になるための本。「何をすればいいか」の具体策が書いてある実用書。",
+    product_url: "https://item.rakuten.co.jp/vaboo/va5618979447u20/",
     price: "¥1,650〜",
     rating: 4.3,
   },
@@ -200,7 +208,9 @@ export const gearItems: GearItem[] = [
     name: "プロンプトエンジニアリング入門",
     category: "書籍",
     comment: "AIに正しく聞く技術。これ知ってるだけで全然違う。",
-    search_keyword: "プロンプトエンジニアリング 入門",
+    reason:
+      "同じAIでも、聞き方で返ってくる答えが10倍変わる。プロンプト設計の具体例とテンプレつき。これ読んだだけで仕事の速度が倍になる。",
+    product_url: "https://item.rakuten.co.jp/kaitoriouji/260321rm400764/",
     price: "¥2,420〜",
     rating: 4.4,
   },
