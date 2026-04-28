@@ -8,20 +8,20 @@ export type Video = {
 export const latestVideos: Video[] = [
   {
     id: "video-1",
-    title: "知らないだけで、損してる。Part10",
-    youtube_id: "y5lCd8R3KdM",
-    note_url: "https://note.com/yofukasi_ai/n/nbb182a3c3bee",
+    title: "「私の動画」が、HeyGenで写真1枚から作られている話。",
+    youtube_id: "4Cmuk4fHOtc",
+    note_url: "https://note.com/yofukasi_ai/n/n215d1a4ec3e4",
   },
   {
     id: "video-2",
-    title: "知らないだけで、損してる。Part9",
-    youtube_id: "U-VRJpVZImc",
-    note_url: "https://note.com/yofukasi_ai/n/n6b41dbc1affd",
+    title: "「自分だけの曲」が、30秒で作れるようになった話。",
+    youtube_id: "Z5G9MeSTFZg",
+    note_url: "https://note.com/yofukasi_ai/n/nd81ea5e631f0",
   },
   {
     id: "video-3",
-    title: "知らないだけで、損してる。Part8",
-    youtube_id: "3e6vll7FHAU",
-    note_url: "https://note.com/yofukasi_ai/n/n5191cf37d78b",
+    title: "「デザイナーに5万円」が、Logo Diffusionで10秒できるようになった話。",
+    youtube_id: "B31lAqmy7vw",
+    note_url: "https://note.com/yofukasi_ai/n/n80ea20ce31ad",
   },
 ];
